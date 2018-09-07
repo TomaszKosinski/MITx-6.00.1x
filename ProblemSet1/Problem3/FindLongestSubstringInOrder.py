@@ -17,8 +17,5 @@ for i in range(len(s)):
         maxLen = currentMax
         maxBeginning = currentBeginning
 
-result = ""
-for i in range( maxLen ):
-    result += s[maxBeginning + i]
-print ("Longest substring in alphabetical order is: " + result)
+print ("Longest substring in alphabetical order is: " + s[maxBeginning:maxBeginning+maxLen])
 
