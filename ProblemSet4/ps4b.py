@@ -129,25 +129,31 @@ def playGame(wordList):
         userInput = input('Enter n to deal a new hand, r to replay the last hand, or e to end game: ')
         if userInput == 'n':
             currentHand = dealHand(HAND_SIZE)
-            whoPlays = ""
-            while True:
-                whoPlays = input('Enter u to have yourself play, c to have the computer play: ')
-                if whoPlays == 'c' or whoPlays == 'u':
-                    break
-                else:
-                    print("Invalid command.")
-            playHand(currentHand, wordList, HAND_SIZE)
+            playCopmOrUserHand(currentHand, wordList, HAND_SIZE)
         elif userInput == 'r':
             if len(currentHand) == 0:
                 print('You have not played a hand yet. Please play a new hand first!')
             else:
-                playHand(currentHand, wordList, HAND_SIZE)
+                playCopmOrUserHand(currentHand, wordList, HAND_SIZE)
         elif userInput == 'e':
             break
         else:
             print("Invalid command.")
 
-
+def playCopmOrUserHand(currentHand, wordList, HAND_SIZE):
+    whoPlays = ""
+    while True:
+        whoPlays = input('Enter u to have yourself play, c to have the computer play: ')
+        print()
+        if whoPlays == 'c' or whoPlays == 'u':
+            break
+        else:
+            print("Invalid command.")
+        
+    if whoPlays == 'c':
+        compPlayHand(currentHand, wordList, HAND_SIZE)
+    else:
+        playHand(currentHand, wordList, HAND_SIZE)
             
         
 #
