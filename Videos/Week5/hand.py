@@ -86,7 +86,8 @@ class Hand(object):
             return False
         for letter in word:
             self.hand[letter] -=1
-        
+	return True    
+    
     def doesHandContainsAllLetters(self, word):
         handCopy = self.hand.copy()
         for letter in word:
