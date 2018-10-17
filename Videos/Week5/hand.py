@@ -82,9 +82,19 @@ class Hand(object):
         word: string
         returns: Boolean (if the word was or was not made)
         """
-        # Your code here
-        raise NotImplementedError()
-
+        if self.doesHandContainsAllLetters(word) == False:
+            return False
+        for letter in word:
+            self.hand[letter] -=1
+        
+    def doesHandContainsAllLetters(self, word):
+        handCopy = self.hand.copy()
+        for letter in word:
+            if(handCopy.get(letter, 0) == 0):
+                return False;
+            else:
+                handCopy[letter] -= 1
+        return True
     
 myHand = Hand(7)
 print(myHand)
