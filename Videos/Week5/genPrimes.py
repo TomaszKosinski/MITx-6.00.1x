@@ -18,15 +18,12 @@ def genPrimes():
         yield lastPrime
         candidate = lastPrime + 1
         while True:
-            print('Candidate:' + str(candidate))
-            print(primes)
-
-            for prime in primes:
-                print('Primes ' + str(prime))
-                if candidate % prime == 0:
-                    print('zwiekszamy dla candidate='+str(candidate) + ' prime:' + str(prime))
+            isPrime = True
+            for p in primes:
+                if candidate % p == 0:
                     candidate +=1
+                    isPrime = False
                     break
-            print("append: " + str(candidate))
-            primes.append(candidate)
-            break
+            if isPrime:
+                primes.append(candidate)
+                break
