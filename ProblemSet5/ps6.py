@@ -102,8 +102,20 @@ class Message(object):
         Returns: a dictionary mapping a letter (string) to 
                  another letter (string). 
         '''
-        pass #delete this line and replace with your code here
-
+        mappingDict = {}
+        index = 0
+        for letter in string.ascii_lowercase:
+            mappedIndex = (index + shift) % len(string.ascii_lowercase)
+            mappingDict[letter] = string.ascii_lowercase[mappedIndex]
+            index += 1
+        
+        index = 0
+        for letter in string.ascii_uppercase:
+            mappedIndex = (index + shift) % len(string.ascii_uppercase)
+            mappingDict[letter] = string.ascii_uppercase[mappedIndex]
+            index += 1
+        return mappingDict
+    
     def apply_shift(self, shift):
         '''
         Applies the Caesar Cipher to self.message_text with the input shift.
@@ -116,7 +128,14 @@ class Message(object):
         Returns: the message text (string) in which every character is shifted
              down the alphabet by the input shift
         '''
-        pass #delete this line and replace with your code here
+        shiftDict = self.build_shift_dict(shift)
+        encryptedMessage = ""
+        for letter in self.message_text:
+            if letter in shiftDict.keys():
+                encryptedMessage += shiftDict[letter]
+            else:
+                encryptedMessage += letter
+        return encryptedMessage
 
 class PlaintextMessage(Message):
     def __init__(self, text, shift):
